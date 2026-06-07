@@ -1,0 +1,227 @@
+/* ===================================
+   3D Scene Studio — Global Styles
+   Aesthetic: Dark Industrial / Sci-Fi
+   =================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-void: #050508;
+  --bg-deep: #0a0a0f;
+  --bg-panel: #0f0f18;
+  --bg-surface: #14141f;
+  --bg-elevated: #1a1a28;
+
+  --accent-primary: #00e5ff;
+  --accent-secondary: #7c3aed;
+  --accent-tertiary: #f59e0b;
+  --accent-danger: #ef4444;
+  --accent-success: #10b981;
+
+  --text-primary: #f0f0ff;
+  --text-secondary: #8888aa;
+  --text-muted: #444466;
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-glow: rgba(0, 229, 255, 0.3);
+
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  --shadow-glow: 0 0 20px rgba(0, 229, 255, 0.15);
+  --shadow-deep: 0 25px 50px rgba(0, 0, 0, 0.8);
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-display);
+  background: var(--bg-void);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--accent-secondary); border-radius: 2px; }
+
+/* Selection */
+::selection {
+  background: rgba(0, 229, 255, 0.2);
+  color: var(--accent-primary);
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.btn:hover::before { opacity: 1; }
+
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--accent-primary);
+  color: var(--bg-void);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+}
+.btn-primary:hover {
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);
+}
+
+.btn-secondary {
+  background: var(--accent-secondary);
+  color: white;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+.btn-secondary:hover {
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+}
+
+.btn-ghost {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+.btn-ghost:hover {
+  border-color: var(--border-glow);
+  color: var(--accent-primary);
+}
+
+.btn-danger {
+  background: var(--accent-danger);
+  color: white;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===== INPUTS ===== */
+.input-field {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.input-field:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.1);
+}
+
+.input-field::placeholder {
+  color: var(--text-muted);
+}
+
+.input-field.error {
+  border-color: var(--accent-danger);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* ===== FORM GROUPS ===== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.form-error {
+  font-size: 11px;
+  color: var(--accent-danger);
+  font-family: var(--font-mono);
+}
+
+/* ===== ALERTS ===== */
+.alert {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  border-left: 3px solid;
+}
+.alert-error {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: var(--accent-danger);
+  color: #fca5a5;
+}
+.alert-success {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: var(--accent-success);
+  color: #6ee7b7;
+}
+
+/* ===== FADE ANIMATION ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.92) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 15px rgba(0, 229, 255, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(0, 229, 255, 0.5); }
+}
+
+.animate-in {
+  animation: fadeIn 0.4s ease both;
+}

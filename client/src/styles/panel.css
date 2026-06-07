@@ -1,0 +1,94 @@
+
+
+.add-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 16px 18px 14px;
+  min-width: 210px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  z-index: 200;
+  animation: fadeInScale 0.18s ease both;
+}
+
+.panel-title {
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 12px;
+}
+
+.panel-options {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+.panel-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: sans-serif;
+  font-size: 13px;
+  color: #222;
+  cursor: pointer;
+  user-select: none;
+}
+
+.panel-option input[type="radio"] {
+  display: none;
+}
+
+.radio-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #bbb;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.15s;
+}
+
+.radio-dot::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e53935;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.radio-dot.checked {
+  border-color: #e53935;
+}
+
+.radio-dot.checked::after {
+  opacity: 1;
+}
+
+.panel-add-btn {
+  display: block;
+  width: 100%;
+  padding: 9px;
+  background: #e53935;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.panel-add-btn:hover {
+  background: #c62828;
+}

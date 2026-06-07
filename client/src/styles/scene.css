@@ -1,0 +1,177 @@
+/* ===== SCENE PAGE ===== */
+
+.scene-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Room background photo ── */
+.room-bg {
+  position: absolute;
+  inset: 0;
+  /* Uses a free Unsplash living room image via CDN */
+  background-image: url('https://cdn.prod.website-files.com/660c57f214250a416fc77e6b/68a5e235043765756347fbdf_2.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Dark overlay to make 3D objects more visible */
+.room-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* ── Three.js canvas layer ── */
+.canvas-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* ── Corner buttons ── */
+.corner-btn {
+  position: absolute;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: filter 0.15s, transform 0.12s;
+}
+
+.corner-btn:active { transform: scale(0.96); }
+.corner-btn:disabled { opacity: 0.6; cursor: default; }
+
+/* Save – top left, red like reference */
+.save-btn {
+  background: #e53935;
+  color: white;
+  box-shadow: 0 3px 12px rgba(229,57,53,0.4);
+}
+.save-btn:hover { filter: brightness(1.1); }
+.save-btn.saved { background: #2e7d32; box-shadow: 0 3px 12px rgba(46,125,50,0.4); }
+.save-btn.errored { background: #b71c1c; }
+
+/* Add Object – top right, red like reference */
+.add-btn {
+  background: #e53935;
+  color: white;
+  box-shadow: 0 3px 12px rgba(229,57,53,0.4);
+}
+.add-btn:hover { filter: brightness(1.1); }
+
+/* Delete – top center */
+.delete-btn {
+  background: rgba(0,0,0,0.7);
+  color: white;
+  backdrop-filter: blur(4px);
+}
+.delete-btn:hover { background: rgba(183,28,28,0.85); }
+
+.btn-arrow {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.btn-spinner {
+  width: 12px; height: 12px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+/* ── Add Object wrapper (positions the dropdown) ── */
+.add-object-wrapper {
+  position: absolute;
+  z-index: 10;
+}
+
+/* ── Top bar (username + logout, subtle) ── */
+.scene-topbar {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  padding: 7px 16px;
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.topbar-user {
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #a5f3a0;
+  letter-spacing: 0.05em;
+}
+
+.topbar-logout {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 4px;
+  color: rgba(255,255,255,0.7);
+  font-family: sans-serif;
+  font-size: 11px;
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.topbar-logout:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+/* ── Loading overlay ── */
+.load-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  z-index: 100;
+  backdrop-filter: blur(3px);
+}
+
+.load-overlay p {
+  font-family: sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.08em;
+}
+
+.load-spinner {
+  width: 36px; height: 36px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95) translateY(-4px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
