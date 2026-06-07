@@ -89,6 +89,7 @@ const useSceneStore = create((set, get) => ({
         credentials: 'include',
         body: JSON.stringify({ objects }),
       });
+      
       if (!res.ok) {
         const data = await res.json();
         throw new Error(data.error || 'Save failed');
