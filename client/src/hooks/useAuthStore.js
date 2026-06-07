@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-const API = import.meta.env.VITE_API_URL || '/api';
+const API = import.meta.env.VITE_API_URL || 'https://drawing-room.onrender.com/api';
 
 const useAuthStore = create((set, get) => ({
   user: null,
