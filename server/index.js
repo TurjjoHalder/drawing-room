@@ -21,23 +21,27 @@ app.use(express.json());
 app.use(cors({
   origin: process.env.CLIENT_URL || 'http://localhost:5173',
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
+
+app.set('trust proxy', 1);
 // Session configuration
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'your-super-secret-key-change-in-production',
+  secret: process.env.SESSION_SECRET || 'dev-secret',
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
-    mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost:27017/3dsceneapp',
-    touchAfter: 24 * 3600, 
+    mongoUrl: process.env.MONGODB_URI,
+    touchAfter: 24 * 3600,
   }),
   cookie: {
-  secure: process.env.NODE_ENV === 'production',
-  httpOnly: true,
-  maxAge: 1000 * 60 * 60 * 24 * 7,
-  sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-},
+    secure: true,           // always true, Render uses HTTPS
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+    sameSite: 'none',       // always none for cross-domain
+  },
 }));
 
 // Routes
