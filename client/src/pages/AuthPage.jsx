@@ -60,13 +60,6 @@ export default function AuthPage() {
 
   return (
     <div className="auth-page">
-      {/* Background grid */}
-      <div className="auth-grid" aria-hidden="true" />
-      <div className="auth-orbs" aria-hidden="true">
-        <div className="orb orb-1" />
-        <div className="orb orb-2" />
-      </div>
-
       <div className="auth-container animate-in">
         {/* Logo */}
         <div className="auth-logo">
@@ -162,7 +155,6 @@ export default function AuthPage() {
           </button>
         </form>
 
-        {/* Demo hint */}
         <p className="auth-hint">
           {mode === 'login' ? (
             <>Don't have an account? <button className="link-btn" onClick={switchMode}>Sign up</button></>

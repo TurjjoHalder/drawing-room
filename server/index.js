@@ -30,7 +30,7 @@ app.use(session({
   saveUninitialized: false,
   store: MongoStore.create({
     mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost:27017/3dsceneapp',
-    touchAfter: 24 * 3600, // lazy update
+    touchAfter: 24 * 3600, 
   }),
   cookie: {
   secure: process.env.NODE_ENV === 'production',
